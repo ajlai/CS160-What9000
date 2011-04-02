@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class IntroPage extends Activity {
-	Button searchName, searchNum, recentSearches, tutorial;
+	Button searchName, searchNum, recentSearches, tutorial, favorites;
 	
     /** Called when the activity is first created. */
     @Override
@@ -19,6 +19,7 @@ public class IntroPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
+        favorites = (Button) findViewById(R.id.preferencesButton);
         tutorial = (Button) findViewById(R.id.tutorialButton);
         recentSearches = (Button) findViewById(R.id.recentButton);
         searchName = (Button) findViewById(R.id.searchNameButton);
@@ -34,19 +35,29 @@ public class IntroPage extends Activity {
         recentSearches.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// Bring up Recent Searches page (STATIC for this prototype).
+				Intent i = new Intent(IntroPage.this, RecentSearches.class);
+				startActivityForResult(i, 1);
 			}});
         
         searchName.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// Bring up the search by name page by calling new activity intent
+				Intent i = new Intent(IntroPage.this, SearchPage.class);
+				startActivityForResult(i, 1);
 			}});
         
         searchNum.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// Bring up the search by numbers page by calling new activity intent
+				Intent i = new Intent(IntroPage.this, SearchPage.class);
+				startActivityForResult(i, 1);
+			}});
+        
+        favorites.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(IntroPage.this, SavedSearches.class);
+				startActivityForResult(i, 1);
 			}});
     }
     
