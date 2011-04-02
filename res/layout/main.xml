@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Beat the System"
+    android:id="@+id/title"
+    android:textSize="16pt"/>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:id="@+id/subtitle"
+    android:layout_below="@+id/title"
+    android:layout_centerInParent="true"
+    android:text="an application to make your life easier."
+    android:paddingBottom="25px" android:paddingLeft="25px"/>
+<Button 
+	android:text="Search for a listing by name"
+	android:id="@+id/searchNameButton"
+	android:layout_below="@+id/subtitle"
+	android:layout_width="wrap_content"
+	android:layout_centerInParent="true"
+	android:layout_height="wrap_content"></Button>
+<Button 
+	android:text="Search for a listing by number"
+	android:id="@+id/searchNumberButton"
+	android:layout_below="@+id/searchNameButton"
+	android:layout_width="wrap_content"
+	android:layout_centerInParent="true"
+	android:layout_height="wrap_content"></Button>
+<Button 
+	android:text="Recent searches"
+	android:id="@+id/recentButton"
+	android:layout_below="@+id/searchNumberButton"
+	android:layout_width="wrap_content"
+	android:layout_centerInParent="true"
+	android:layout_height="wrap_content"></Button>
+<Button 
+	android:text="Tutorial"
+	android:id="@+id/tutorialButton"
+	android:layout_width="wrap_content"
+	android:layout_centerInParent="true"
+	android:layout_below="@+id/recentButton"
+	android:layout_height="wrap_content"></Button>
+</RelativeLayout>
