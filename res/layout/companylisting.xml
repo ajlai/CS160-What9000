@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<LinearLayout
+	android:orientation="vertical"
+	android:id="@+id/listings"
+    android:layout_width="fill_parent"
+    android:layout_above="@+id/sidebar"
+    android:layout_height="fill_parent">
+</LinearLayout>
+    
+       <LinearLayout
+	android:orientation="horizontal"
+	android:layout_width="fill_parent"
+	android:id="@+id/sidebar"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true">
+    <Button
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+	android:text="Back"
+	android:id="@+id/back"></Button>
+	<Button
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+	android:text="Home"
+	android:id="@+id/home"></Button>
+	<Button
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+	android:text="Help"
+	android:id="@+id/help"></Button>
+	</LinearLayout>
+</RelativeLayout>

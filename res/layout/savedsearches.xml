@@ -47,7 +47,7 @@
 	android:layout_below="@+id/recentButton"
 	android:layout_height="wrap_content"></Button>
 <Button 
-	android:text="Favorite Searches"
+	android:text="Saved Searches and Information"
 	android:id="@+id/preferencesButton"
 	android:layout_width="wrap_content"
 	android:layout_centerInParent="true"
