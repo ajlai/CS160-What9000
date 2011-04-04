@@ -30,6 +30,10 @@ public class IVRNode {
 		return this.children;
 	}
 	
+	public IVRNode getParent() {
+		return this.parent;
+	}
+	
 	public String getType() {
 		return this.type;
 	}
