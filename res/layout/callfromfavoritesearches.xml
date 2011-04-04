@@ -17,6 +17,7 @@
     android:textSize="10pt"
     android:layout_below="@+id/callinginfo"
     android:id="@+id/calling"></TextView>
+
 <Button
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
@@ -24,4 +25,9 @@
 	android:id="@+id/callingbutton"
 	android:layout_below="@+id/calling">
 </Button>
+    	<WebView
+android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/webviewer"
+    android:layout_below="@+id/callingbutton"/>
 </RelativeLayout>

@@ -7,10 +7,18 @@ public class IVRNode {
 	private IVRNode parent;
 	private ArrayList<IVRNode> children = new ArrayList<IVRNode> ();
 	
+	String text = "";
+	Option[] options; // format: [[buttonNum, text, linkAddress], ...]
+	
 	String title;
 	private String type;
 	String number;
 	private URL src;
+	
+	public IVRNode(String text, Option[] options){
+		this.text = text;
+		this.options = options;
+	}
 
 	public IVRNode(IVRNode p, String t, String n) {
 		parent = p;
