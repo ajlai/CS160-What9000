@@ -2,6 +2,7 @@ package edu.berkeley.cs160.groupp;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,12 +24,14 @@ public class IntroPage extends Activity {
         recentSearches = (Button) findViewById(R.id.recentButton);
         searchName = (Button) findViewById(R.id.searchNameButton);
         searchNum = (Button) findViewById(R.id.searchNumberButton);
-        
+        final Context c = this;
         //TODO: move all these on click listeners somewhere more elegant
         tutorial.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// Bring up Dialog containing necessary overview + help for application.
+				Intent myIntent = new Intent(c, PhoneListView.class);
+				startActivityForResult(myIntent, 0);
 			}});
         
         recentSearches.setOnClickListener(new OnClickListener() {
