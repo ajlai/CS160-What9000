@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    android:textSize="13pt"
+    android:id="@+id/callinginfo"></TextView>    
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Calling..."
+    android:textSize="10pt"
+    android:layout_below="@+id/callinginfo"
+    android:id="@+id/calling"></TextView>
+<Button
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="Click here to begin the call."
+	android:id="@+id/callingbutton"
+	android:layout_below="@+id/calling">
+</Button>
+</RelativeLayout>

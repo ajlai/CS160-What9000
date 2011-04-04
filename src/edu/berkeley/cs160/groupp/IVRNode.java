@@ -7,9 +7,9 @@ public class IVRNode {
 	private IVRNode parent;
 	private ArrayList<IVRNode> children = new ArrayList<IVRNode> ();
 	
-	private String title;
+	String title;
 	private String type;
-	private String number;
+	String number;
 	private URL src;
 
 	public IVRNode(IVRNode p, String t, String n) {

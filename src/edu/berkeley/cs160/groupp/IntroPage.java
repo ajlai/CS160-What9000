@@ -1,6 +1,7 @@
 package edu.berkeley.cs160.groupp;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class IntroPage extends Activity {
 	Button searchName, searchNum, recentSearches, tutorial, favorites;
@@ -31,22 +33,35 @@ public class IntroPage extends Activity {
 			@Override
 			public void onClick(View v) {
 				// Bring up Dialog containing necessary overview + help for application.
-				Intent myIntent = new Intent(c, PhoneListView.class);
-				startActivityForResult(myIntent, 0);
+				final Dialog dialog = new Dialog(IntroPage.this);
+				dialog.setContentView(R.layout.help);
+				dialog.setTitle("Tutorial");
+				dialog.setCancelable(true);
+		
+				Button button = (Button) dialog
+						.findViewById(R.id.returntoapp);
+				button.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dialog.cancel();
+					}
+				});
+
+				dialog.show();
 			}});
         
         recentSearches.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(IntroPage.this, RecentSearches.class);
+				Intent i = new Intent(c, RecentSearches.class);
 				startActivityForResult(i, 1);
 			}});
         
         searchName.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(IntroPage.this, SearchPage.class);
-				startActivityForResult(i, 1);
+				Intent myIntent = new Intent(c, PhoneListView.class);
+				startActivityForResult(myIntent, 0);
 			}});
         
         searchNum.setOnClickListener(new OnClickListener() {
@@ -59,7 +74,7 @@ public class IntroPage extends Activity {
         favorites.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(IntroPage.this, SavedSearches.class);
+				Intent i = new Intent(c, FavoriteSearches.class);
 				startActivityForResult(i, 1);
 			}});
     }
