@@ -7,38 +7,23 @@ public class IVRNode {
 	private IVRNode parent;
 	private ArrayList<IVRNode> children = new ArrayList<IVRNode> ();
 	
-	String text = "";
-	Option[] options; // format: [[buttonNum, text, linkAddress], ...]
-	
 	String title;
-	private String type;
+	private String description;
 	String number;
 	private URL src;
-	
-	public IVRNode(String text, Option[] options){
-		this.text = text;
-		this.options = options;
-	}
 
-	public IVRNode(IVRNode p, String t, String n) {
+	public IVRNode(IVRNode p, String type, String t, String content) {
 		parent = p;
 		title = t;
-		type = "number";
-		number = n;
+		if (type == "number") number = content;
+		if (type == "menu") description = content;
 	}
 	public IVRNode(IVRNode p, String t, URL s) {
 		parent = p;
 		title = t;
-		type = "link";
 		src = s;
 	}
-	
-	public IVRNode(IVRNode p, String t) {
-		parent = p;
-		title = t;
-		type = "menu";
-	}
-	
+
 	public ArrayList<IVRNode> getChildren() {
 		return this.children;
 	}
@@ -50,16 +35,17 @@ public class IVRNode {
 	}
 	
 	public IVRNode addChildNumber(String t, String n) {
-		IVRNode child = new IVRNode(this, t, n);
+		IVRNode child = new IVRNode(this, "number", t, n);
 		this.children.add(child);
 		return child;
 	}
 	
-	public IVRNode addChildMenu(String t) {
-		IVRNode child = new IVRNode(this, t);
+	public IVRNode addChildMenu(String t, String d) {
+		IVRNode child = new IVRNode(this, "menu", t, d);
 		this.children.add(child);
 		return child;
 	}
+	
 	
 	public String[] getMenuString() {
 		String [] rtn = new String [this.children.size()];
@@ -68,6 +54,10 @@ public class IVRNode {
 			rtn[i] = this.children.get(i).title;
 		}
 		return rtn;
+	}
+
+	public String getMenuDescription() {
+		return this.description;
 	}
 	
 	public IVRNode getChildByTitle(String t) {
