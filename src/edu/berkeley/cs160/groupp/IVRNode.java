@@ -18,7 +18,6 @@ public class IVRNode {
 		type = "number";
 		number = n;
 	}
-	
 	public IVRNode(IVRNode p, String t, URL s) {
 		parent = p;
 		title = t;
