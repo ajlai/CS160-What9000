@@ -7,20 +7,16 @@ import android.app.Application;
 
 public class IVRApp extends Application {
 	private static IVRNode root;
-
+	private static IVRNode current;
 	public void onCreate() {
-		try {
-			initialize();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
+		initialize();
 	}
 	
-	public void initialize() throws MalformedURLException {
+	public static void initialize() {
 		IVRNode r = new IVRNode(null, "menu", "Main menu", "relax");
 		r.addChildNumber("Some number", "1234567890");
 		r.addChildNumber("some other number", "9876543210");
-		r.addChildURL("some url", new URL("http://google.com"));
+		r.addChildURL("some url", "http://www.google.com");
 		r.addChildMenu("some unfinished menu", "some unfinished menu descr");
 		setRootNode(r);
 	}
@@ -32,8 +28,16 @@ public class IVRApp extends Application {
 	public static void setRootNode(IVRNode r) {
 		root = r;
 	}
+	
+	public static IVRNode getCurrentBranch() {
+		return current;
+	}
+	
+	public static void setCurrentBranch(IVRNode c) {
+		current = c;
+	}
 
-	public void initializeDMV() {
+	public static void initializeDMV() {
 		IVRNode dmv = new IVRNode(null, "menu", "California DMV", "Please select a language.");
 		IVRNode announcement = dmv.addChildMenu("English", "For DMV hours and closures, please listen to DMV News. Please note: " +
 				"due to heavy volume processing, for Califormia's new security enhanced " +
@@ -91,6 +95,14 @@ public class IVRApp extends Application {
 		
 		
 		setRootNode(dmv);
+	}
+	
+	public static void initializeFavorites() {
+		IVRNode fav = new IVRNode(null, "menu", "Favorites", "favorites description here");
+		fav.addChildNumber("ATT Customer Service: More Options", "180033105001");
+		fav.addChildNumber("Oakland DMV: Directions", "180077701331");
+		fav.addChildNumber("Oakland DMV: Hours", "180077701331");
+		setRootNode(fav);
 	}
 	
 	

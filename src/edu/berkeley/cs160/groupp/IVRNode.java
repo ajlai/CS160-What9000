@@ -7,29 +7,47 @@ public class IVRNode {
 	private IVRNode parent;
 	private ArrayList<IVRNode> children = new ArrayList<IVRNode> ();
 	
-	String title;
+	private String title;
 	private String description;
-	String number;
-	private URL src;
+	private String number;
+	private String src;
+	private String type;
 
-	public IVRNode(IVRNode p, String type, String t, String content) {
+	public IVRNode(IVRNode p, String typ, String t, String content) {
 		parent = p;
 		title = t;
-		if (type == "number") number = content;
-		if (type == "menu") description = content;
+		type = typ;
+		if (typ.equals("number")) number = content;
+		if (typ.equals("menu")) description = content;
+		if (typ.equals("link")) src = content;
 	}
-	public IVRNode(IVRNode p, String t, URL s) {
-		parent = p;
-		title = t;
-		src = s;
+	
+	public String getTitle() {
+		return this.title;
 	}
 
 	public ArrayList<IVRNode> getChildren() {
 		return this.children;
 	}
 	
-	public IVRNode addChildURL(String t, URL s) {
-		IVRNode child = new IVRNode(this, t, s);
+	public String getType() {
+		return this.type;
+	}
+	
+	public String getNumber() {
+		return this.number;
+	}
+	
+	public String getDescription() {
+		return this.description;
+	}
+	
+	public String getSrc() {
+		return this.src;
+	}
+	
+	public IVRNode addChildURL(String t, String s) {
+		IVRNode child = new IVRNode(this, "link", t, s);
 		this.children.add(child);
 		return child;
 	}
@@ -55,10 +73,6 @@ public class IVRNode {
 		}
 		return rtn;
 	}
-
-	public String getMenuDescription() {
-		return this.description;
-	}
 	
 	public IVRNode getChildByTitle(String t) {
 		IVRNode child;
@@ -69,5 +83,9 @@ public class IVRNode {
 			}
 		}
 		return null;
+	}
+	
+	public IVRNode getChild(int i){
+		return this.children.get(i);
 	}
 }
