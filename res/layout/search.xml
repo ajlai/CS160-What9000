@@ -1,43 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="Search for..."
-    android:id="@+id/title"
-    android:layout_alignParentTop="true"
-    android:textSize="10pt" android:paddingLeft="40px"/>
-<EditText
+    <TextView
 	android:layout_width="wrap_content"
-	android:id="@+id/searchbox"
-	android:text="Type the name of the company you're looking to find."
-	android:layout_below="@+id/title"
-	android:layout_height="wrap_content">
-</EditText>
-<Button 
-	android:layout_width="fill_parent" 
-	android:layout_height="wrap_content" 
-	android:text="Submit" 
-	android:id="@+id/submit" 
-	android:layout_below="@+id/searchbox"
-	>
-</Button>
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="Recent results found..."
-    android:layout_below="@+id/submit"
-    android:id="@+id/recents"
-    android:textSize="7pt" android:paddingLeft="40px" android:paddingTop="10px"/>
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="Sorry, no results found."
-    android:layout_below="@+id/recents"
-    android:id="@+id/nosearchesfound"
-    android:textSize="7pt" android:paddingLeft="40px"/>
-</RelativeLayout>
+	android:layout_height="wrap_content"
+	android:text="Current Companies"
+	android:textSize="13pt"/>
+    <ListView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" 
+        android:id="@android:id/list"></ListView>
+</LinearLayout>

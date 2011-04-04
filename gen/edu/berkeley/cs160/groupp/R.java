@@ -9,6 +9,7 @@ package edu.berkeley.cs160.groupp;
 
 public final class R {
     public static final class array {
+        public static final int demo_search_links=0x7f050004;
         public static final int recent_links=0x7f050003;
         public static final int recent_titles=0x7f050002;
         public static final int tut_links=0x7f050001;
@@ -28,19 +29,15 @@ public final class R {
         public static final int help=0x7f060008;
         public static final int home=0x7f060007;
         public static final int listings=0x7f060004;
-        public static final int nosearchesfound=0x7f060016;
-        public static final int preferencesButton=0x7f060011;
+        public static final int preferencesButton=0x7f060010;
         public static final int recentButton=0x7f06000f;
-        public static final int recents=0x7f060015;
         public static final int returntoapp=0x7f06000a;
         public static final int searchNameButton=0x7f06000d;
         public static final int searchNumberButton=0x7f06000e;
-        public static final int searchbox=0x7f060013;
         public static final int sidebar=0x7f060005;
-        public static final int submit=0x7f060014;
         public static final int subtitle=0x7f06000c;
         public static final int title=0x7f06000b;
-        public static final int tutorialButton=0x7f060010;
+        public static final int tutorialButton=0x7f060011;
         public static final int tutorialtext=0x7f060009;
         public static final int webviewer=0x7f060003;
     }

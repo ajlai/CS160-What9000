@@ -22,4 +22,7 @@
     	<item>tel:180077701331 Oakland DMV: Directions</item>
     	<item>http://www.apple.com/retail/sanfrancisco/map/</item>
 	</string-array>
+	<string-array name="demo_search_links">
+    	<item>Department of Motor Vehicles</item>
+	</string-array>
 </resources>

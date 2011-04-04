@@ -16,7 +16,7 @@
     android:id="@+id/subtitle"
     android:layout_below="@+id/title"
     android:layout_centerInParent="true"
-    android:text="an application to make your life easier."
+    android:text="Mapping out IVR trees to make your life easier. Click Help for more info."
     android:paddingBottom="25px" android:paddingLeft="25px"/>
 <Button 
 	android:text="Search for a listing by name"
@@ -26,7 +26,7 @@
 	android:layout_centerInParent="true"
 	android:layout_height="wrap_content"></Button>
 <Button 
-	android:text="Search for a listing by number"
+	android:text="List of all companies we support"
 	android:id="@+id/searchNumberButton"
 	android:layout_below="@+id/searchNameButton"
 	android:layout_width="wrap_content"
@@ -39,18 +39,18 @@
 	android:layout_width="wrap_content"
 	android:layout_centerInParent="true"
 	android:layout_height="wrap_content"></Button>
-<Button 
-	android:text="Tutorial"
-	android:id="@+id/tutorialButton"
+	<Button 
+	android:text="Favorite Searches"
+	android:id="@+id/preferencesButton"
 	android:layout_width="wrap_content"
 	android:layout_centerInParent="true"
 	android:layout_below="@+id/recentButton"
 	android:layout_height="wrap_content"></Button>
 <Button 
-	android:text="Favorite Searches"
-	android:id="@+id/preferencesButton"
+	android:text="Help"
+	android:id="@+id/tutorialButton"
 	android:layout_width="wrap_content"
 	android:layout_centerInParent="true"
-	android:layout_below="@+id/tutorialButton"
+	android:layout_below="@+id/preferencesButton"
 	android:layout_height="wrap_content"></Button>
 </RelativeLayout>
