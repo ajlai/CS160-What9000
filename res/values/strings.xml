@@ -2,4 +2,22 @@
 <resources>
     <string name="hello">Hello World, IVRMap!</string>
     <string name="app_name">IVRMap</string>
+    <string-array name="tut_titles">
+    	<item>ATT Customer Service: More Options</item>
+    	<item>Oakland DMV: Directions</item>
+    	<item>Oakland DMV: Opening and Closing Hours</item>
+	</string-array>
+	<string-array name="tut_links">
+    	<item>tel:180033105001 ATT Customer Service: More Options</item>
+    	<item>tel:180077701331 Oakland DMV: Directions</item>
+    	<item>tel:180077701331 Oakland DMV: Opening and Closing Hours</item>
+	</string-array>
+	<string-array name="recent_titles">
+    	<item>Powell Apple Store: Store Hours</item>
+    	<item>Oakland DMV: Directions</item>
+	</string-array>
+	<string-array name="recent_links">
+    	<item>tel:141539202021 Powell Apple Store: Store Hours</item>
+    	<item>tel:180077701331 Oakland DMV: Directions</item>
+	</string-array>
 </resources>
