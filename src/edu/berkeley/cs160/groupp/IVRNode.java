@@ -7,51 +7,67 @@ public class IVRNode {
 	private IVRNode parent;
 	private ArrayList<IVRNode> children = new ArrayList<IVRNode> ();
 	
-	String title;
+	private String title;
+	private String description;
+	private String number;
+	private String src;
 	private String type;
-	String number;
-	private URL src;
 
-	public IVRNode(IVRNode p, String t, String n) {
+	public IVRNode(IVRNode p, String typ, String t, String content) {
 		parent = p;
 		title = t;
-		type = "number";
-		number = n;
-	}
-	public IVRNode(IVRNode p, String t, URL s) {
-		parent = p;
-		title = t;
-		type = "link";
-		src = s;
+		type = typ;
+		if (typ.equals("number")) number = content;
+		if (typ.equals("menu")) description = content;
+		if (typ.equals("link")) src = content;
 	}
 	
-	public IVRNode(IVRNode p, String t) {
-		parent = p;
-		title = t;
-		type = "menu";
+	public String getTitle() {
+		return this.title;
 	}
-	
+
 	public ArrayList<IVRNode> getChildren() {
 		return this.children;
 	}
 	
-	public IVRNode addChildURL(String t, URL s) {
-		IVRNode child = new IVRNode(this, t, s);
+	public IVRNode getParent() {
+		return this.parent;
+	}
+	
+	public String getType() {
+		return this.type;
+	}
+	
+	public String getNumber() {
+		return this.number;
+	}
+	
+	public String getDescription() {
+		return this.description;
+	}
+	
+	public String getSrc() {
+		return this.src;
+	}
+	
+	public IVRNode addChildURL(String t, String s) {
+		IVRNode child = new IVRNode(this, "link", t, s);
 		this.children.add(child);
 		return child;
 	}
 	
 	public IVRNode addChildNumber(String t, String n) {
-		IVRNode child = new IVRNode(this, t, n);
+		IVRNode child = new IVRNode(this, "number", t, n);
 		this.children.add(child);
 		return child;
 	}
 	
-	public IVRNode addChildMenu(String t) {
-		IVRNode child = new IVRNode(this, t);
+	public IVRNode addChildMenu(String t, String d) {
+		IVRNode child = new IVRNode(this, "menu", t, d);
 		this.children.add(child);
 		return child;
 	}
+	
 	
 	public String[] getMenuString() {
 		String [] rtn = new String [this.children.size()];
@@ -71,5 +87,9 @@ public class IVRNode {
 			}
 		}
 		return null;
+	}
+	
+	public IVRNode getChild(int i){
+		return this.children.get(i);
 	}
 }

@@ -1,5 +1,7 @@
 package edu.berkeley.cs160.groupp;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
@@ -14,29 +16,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class FavoriteSearches extends ListActivity {
-	    @Override
-	    public void onCreate(Bundle savedInstanceState) {
-	        super.onCreate(savedInstanceState);
-	 
-	        setListAdapter(ArrayAdapter.createFromResource(getApplicationContext(),
-	                R.array.tut_titles, R.layout.list_item));
-	        setContentView(R.layout.savedsearches);
-	        
-	        getListView().setOnItemClickListener(new OnItemClickListener() {
-
-	        	final String[] links = getResources().getStringArray(R.array.tut_links);
-				@Override
-				public void onItemClick(AdapterView<?> arg0, View view,
-						int position, long id) {
-					String content = links[position];
-				    Intent showContent = new Intent(getApplicationContext(),
-				            CallFromFavoriteSearches.class);
-				    showContent.setData(Uri.parse(content));
-				    startActivity(showContent);
-					
-				}
-	        });
-	    }
+public class FavoriteSearches extends IVRNodeBranchView {
+	
+		public void onCreate(Bundle savedInstanceState) {
+			IVRApp.initializeFavorites();
+			IVRApp.setCurrentBranch(IVRApp.getRootNode());
+			super.onCreate(savedInstanceState);
+		}
 	}
 
