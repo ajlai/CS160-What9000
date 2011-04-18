@@ -124,19 +124,25 @@ public class IVRApp extends Application {
 		IVRNode officeHours = makeAppt.addChildMenu("DMV office hours", "Offices are open Monday, Tuesday, Thursday, and Friday from 8 AM to 5 PM, " +
 				"and Wednesdays from 9 AM to 5 PM.");
 		IVRNode closures = makeAppt.addChildMenu("DMV office closure information", "system unavailable");
-		
-		
-		
+	
 		setRootNode(dmv);
 	}
 	
 	public static void initializeFavorites() {
 		IVRNode fav = new IVRNode(null, "menu", "Favorite Searches", "This is a list of searches you have marked as your favorite. " +
 				"Click any search to be transported directly to the end page.");
-		fav.addChildNumber("ATT Customer Service: More Options", "180033105001");
-		fav.addChildNumber("El Cerrito DMV: Directions", "ppp1ppppppppp5pp94709pp1pp1");
-		fav.addChildNumber("Oakland Claremont DMV: Hours", "180077701331");
+		fav.addChildNumber("ATT Customer Service: More Options", "18003310500pppppp1");
+		fav.addChildNumber("El Cerrito DMV: Directions", "18007770133pp1ppppppppp5pp94709pp1pp1");
+		fav.addChildNumber("Oakland Claremont DMV: Directions", "18007770133pp1ppppppppp5pp94709pp2pp1");
 		setRootNode(fav);
+	}
+	
+	public static void initializeRecents() {
+		IVRNode recent = new IVRNode(null, "menu", "Recent Searches", "This is a list of recent searches you have done.");
+		recent.addChildNumber("Powell Apple Store: Store Hours and Directions", "14153920202ppp1");
+		recent.addChildNumber("Oakland Claremont DMV: Directions", "18007770133pp1ppppppppp5pp94709pp2pp1");
+		recent.addChildURL("Powell Apple Store; Address (Web)", "http://www.apple.com/retail/sanfrancisco/map/");
+		setRootNode(recent);
 	}
 	
 	

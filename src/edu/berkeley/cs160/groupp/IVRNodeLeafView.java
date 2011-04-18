@@ -66,6 +66,9 @@ public class IVRNodeLeafView extends Activity {
 			TextView callingInfo = (TextView) findViewById(R.id.callinginfo);
 			callingInfo.setText(title);
 			
+			TextView status = (TextView) findViewById(R.id.calling);
+			status.setVisibility(4);
+			
 			EditText enterInfo = (EditText) findViewById(R.id.enterinfoplz);
 			enterInfo.setVisibility(4);
 			
@@ -86,7 +89,7 @@ public class IVRNodeLeafView extends Activity {
 			linkInfo.setText(title);
 			
 			TextView status = (TextView) findViewById(R.id.calling);
-			status.setText(" ");
+			status.setVisibility(4);
 			
 			EditText enterInfo = (EditText) findViewById(R.id.enterinfoplz);
 			enterInfo.setVisibility(4);
