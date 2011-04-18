@@ -65,7 +65,7 @@ public class IVRApp extends Application {
 		IVRNode driverLicenseOption = mainMenu.addChildMenu("Driver License", "Driver license and ID information: please select one of the following:");
 		IVRNode orderForms = mainMenu.addChildMenu("Order Forms", "unimplemented");
 		IVRNode makeAppt = mainMenu.addChildMenu("Make an Appointment", "Is this a behind-the-wheel driving test, or an office visit?");
-		IVRNode findOffice = mainMenu.addChildMenu("Find an Office", "You can either place a call to the system to find your closest office or choose from a list. Which would you like?");
+		IVRNode findOffice = mainMenu.addChildMenu("Find an Office", "You can either place a call to the system to find the office closest to your zip code, or choose from a list of locations. Which would you like?");
 		IVRNode dmvNews = mainMenu.addChildMenu("Latest DMV News", "Latest DMV news");
 
 		IVRNode findOfficeCall = findOffice.addChildTextInput("Call the System", "Please enter your 5-digit zip code.", "18007770133,,1,,,,,,,,5,,");
@@ -132,7 +132,7 @@ public class IVRApp extends Application {
 		IVRNode fav = new IVRNode(null, "menu", "Favorite Searches", "This is a list of searches you have marked as your favorite. " +
 				"Click any search to be transported directly to the end page.");
 		fav.addChildNumber("ATT Customer Service: More Options", "18003310500pppppp1");
-		fav.addChildNumber("El Cerrito DMV: Directions", "18007770133pp1ppppppppp5pp94709pp1pp1");
+		fav.addChildNumber("Oakland Coliseum DMV: Directions", "18007770133pp1ppppppppp5pp94709pp3pp1");
 		fav.addChildNumber("Oakland Claremont DMV: Directions", "18007770133pp1ppppppppp5pp94709pp2pp1");
 		setRootNode(fav);
 	}

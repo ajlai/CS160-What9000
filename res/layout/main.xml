@@ -25,7 +25,7 @@
 	android:layout_centerInParent="true"
 	android:layout_height="wrap_content" android:layout_width="250sp"></Button>
 <Button 
-	android:text="Full List of All Companies We Support"
+	android:text="List of all companies we support"
 	android:id="@+id/searchNumberButton"
 	android:layout_below="@+id/searchNameButton"
 	android:layout_centerInParent="true"
