@@ -60,7 +60,7 @@ public class IntroPage extends Activity {
         searchName.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent myIntent = new Intent(c, PhoneListView.class);
+				Intent myIntent = new Intent(c, SearchPage.class);
 				startActivityForResult(myIntent, 0);
 			}});
         

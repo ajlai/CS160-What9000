@@ -28,7 +28,8 @@ public class SearchPage extends ListActivity {
 			public void onItemClick(AdapterView<?> arg0, View view,
 					int position, long id) {
 				//assume that its gonna be dmv
-				IVRApp.initializeDMV();
+				if (position == 0) IVRApp.initializeDMV();
+				else IVRApp.initializePGE();
 				IVRApp.setCurrentBranch(IVRApp.getRootNode());
 				Intent i = new Intent(SearchPage.this, IVRNodeBranchView.class);
 				startActivity(i);

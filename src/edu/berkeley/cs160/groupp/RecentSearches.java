@@ -14,29 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class RecentSearches extends ListActivity {
+public class RecentSearches extends IVRNodeBranchView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
-    	super.onCreate(savedInstanceState);
-   	 
-        setListAdapter(ArrayAdapter.createFromResource(getApplicationContext(),
-                R.array.recent_titles, R.layout.list_item));
-        setContentView(R.layout.recentsearches);
-        getListView().setOnItemClickListener(new OnItemClickListener() {
-
-        	final String[] links = getResources().getStringArray(R.array.recent_links);
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View view,
-					int position, long id) {
-				String content = links[position];
-			    Intent showContent = new Intent(getApplicationContext(),
-			            CallFromFavoriteSearches.class);
-			    showContent.setData(Uri.parse(content));
-			    startActivity(showContent);
-				
-			}
-        });
-     
-    }
+		IVRApp.initializeRecents();
+		IVRApp.setCurrentBranch(IVRApp.getRootNode());
+		super.onCreate(savedInstanceState);
+	}
 
 }

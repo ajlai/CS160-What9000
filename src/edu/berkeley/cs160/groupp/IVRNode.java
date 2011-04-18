@@ -12,14 +12,23 @@ public class IVRNode {
 	private String number;
 	private String src;
 	private String type;
-
+	
 	public IVRNode(IVRNode p, String typ, String t, String content) {
 		parent = p;
 		title = t;
 		type = typ;
 		if (typ.equals("number")) number = content;
+		if (typ.equals("text")) number = content;
 		if (typ.equals("menu")) description = content;
 		if (typ.equals("link")) src = content;
+	}
+	
+	public IVRNode(IVRNode p, String typ, String t, String d, String content) {
+		parent = p;
+		title = t;
+		type = typ;
+		number = content;
+		description = d;
 	}
 	
 	public String getTitle() {
@@ -64,6 +73,12 @@ public class IVRNode {
 	
 	public IVRNode addChildMenu(String t, String d) {
 		IVRNode child = new IVRNode(this, "menu", t, d);
+		this.children.add(child);
+		return child;
+	}
+	
+	public IVRNode addChildTextInput(String t, String d, String n) {
+		IVRNode child = new IVRNode(this, "text", t, d, n);
 		this.children.add(child);
 		return child;
 	}

@@ -1,4 +1,4 @@
-package edu.berkeley.cs160.groupp;
+	package edu.berkeley.cs160.groupp;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class IVRNodeLeafView extends Activity {
@@ -16,6 +18,7 @@ public class IVRNodeLeafView extends Activity {
 	String number = "0000";
 	String src = "http://www.google.com";
 	String type = "number";
+	String text = "null";
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,12 +30,47 @@ public class IVRNodeLeafView extends Activity {
 			number = extras.getString("number");
 			src = extras.getString("src");
 			type = extras.getString("type");
+			text = extras.getString("text");
 		}
 		
-		if (type.equals("number")) {
+		if (type.equals("text")) {
+			TextView callingInfo = (TextView) findViewById(R.id.calling);
+			callingInfo.setText("Please enter in the required info, then press the button to call. Your call will not be completed properly if you do not enter the info.");
+			callingInfo.setTextSize(15);
+			
+			final EditText enterInfo = (EditText) findViewById(R.id.enterinfoplz);
+			enterInfo.setText(text);
+			
+			Button connect = (Button) findViewById(R.id.callingbutton);
+	        connect.setOnClickListener(new OnClickListener() {
+	
+				@Override
+				public void onClick(View arg0) {
+					try {
+						String editInfoText = enterInfo.getText().toString();
+						Intent callIntent;
+						if (editInfoText.startsWith("Please")) {
+							callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + "4089648650"));
+						} else {
+							callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + editInfoText));
+						}
+			    		startActivity(callIntent);
+			    	} catch (ActivityNotFoundException e) {
+			    		e.printStackTrace();
+			    	}
+				}}); 
+		}
+		
+		else if (type.equals("number")) {
 			
 			TextView callingInfo = (TextView) findViewById(R.id.callinginfo);
 			callingInfo.setText(title);
+			
+			TextView status = (TextView) findViewById(R.id.calling);
+			status.setVisibility(4);
+			
+			EditText enterInfo = (EditText) findViewById(R.id.enterinfoplz);
+			enterInfo.setVisibility(4);
 			
 			Button connect = (Button) findViewById(R.id.callingbutton);
 	        connect.setOnClickListener(new OnClickListener() {
@@ -51,7 +89,10 @@ public class IVRNodeLeafView extends Activity {
 			linkInfo.setText(title);
 			
 			TextView status = (TextView) findViewById(R.id.calling);
-			status.setText(" ");
+			status.setVisibility(4);
+			
+			EditText enterInfo = (EditText) findViewById(R.id.enterinfoplz);
+			enterInfo.setVisibility(4);
 			
 			Button connect = (Button) findViewById(R.id.callingbutton);
 			connect.setText("Connect to web page");

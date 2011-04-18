@@ -17,13 +17,20 @@
     android:textSize="10pt"
     android:layout_below="@+id/callinginfo"
     android:id="@+id/calling"></TextView>
+<EditText
+	android:id="@+id/enterinfoplz"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Please enter in the required information here."
+	android:layout_below="@+id/calling"
+	/>
 
 <Button
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:text="Click here to begin the call."
 	android:id="@+id/callingbutton"
-	android:layout_below="@+id/calling">
+	android:layout_below="@+id/enterinfoplz">
 </Button>
     	<WebView
 android:layout_width="wrap_content"
