@@ -28,6 +28,7 @@ public class IVRNodeLeafView extends Activity {
 		if (extras != null) {
 			title = extras.getString("title");
 			number = extras.getString("number");
+			number = number.replaceAll("[^0-9,p]", "");
 			src = extras.getString("src");
 			type = extras.getString("type");
 			text = extras.getString("text");
