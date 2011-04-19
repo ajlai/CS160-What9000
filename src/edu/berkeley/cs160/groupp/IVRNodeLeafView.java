@@ -53,7 +53,9 @@ public class IVRNodeLeafView extends Activity {
 						if (editInfoText.startsWith("Please")) {
 							callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + "4089648650"));
 						} else {
-							callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + editInfoText));
+							if (editInfoText == "4089648650") 
+								callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + editInfoText + ",,1"));
+							else callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + editInfoText));
 						}
 			    		startActivity(callIntent);
 			    	} catch (ActivityNotFoundException e) {
