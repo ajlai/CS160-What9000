@@ -28,7 +28,6 @@ public class IVRNodeLeafView extends Activity {
 		if (extras != null) {
 			title = extras.getString("title");
 			number = extras.getString("number");
-			number = number.replaceAll("[^0-9,p]", "");
 			src = extras.getString("src");
 			type = extras.getString("type");
 			text = extras.getString("text");
@@ -49,6 +48,7 @@ public class IVRNodeLeafView extends Activity {
 				public void onClick(View arg0) {
 					try {
 						String editInfoText = enterInfo.getText().toString();
+						editInfoText = editInfoText.replaceAll("[^0-9,p]", "");
 						Intent callIntent;
 						if (editInfoText.startsWith("Please")) {
 							callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + "4089648650"));
