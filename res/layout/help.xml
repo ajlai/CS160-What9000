@@ -7,7 +7,7 @@
 <TextView  
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="This application is to help you navigate through IVR systems of companies.\nTo find a company, please click the option 'Search by name'.\nOnce you've found a company, click their listing. You will be presented with a menu of options. Choose the option that pertains to you (e.g. store hours). Continue until you've obtained what you wanted.\nOnce you've done some searches, you can retrace them using 'Recent searches'.\nYou can also save searches and find them under 'Favorite searches'."
+    android:text="This application is to help you navigate through IVR systems of companies.\nTo find a company, please click 'List of all companies we support'.\nOnce you've found a company, click their listing. You will be presented with a menu of options. Choose the option that pertains to you (e.g. store hours). Continue until you've obtained what you wanted.\nOnce you've done some searches, you can retrace them using 'Recent searches'.\nYou can also save searches and find them under 'Favorite searches'."
     android:id="@+id/tutorialtext"
     android:textSize="8pt"/>
 <Button 

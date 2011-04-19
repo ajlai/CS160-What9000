@@ -40,15 +40,17 @@ public class IVRApp extends Application {
 	public static void initializePGE() {
 		IVRNode pge = new IVRNode(null, "menu", "PG&E: Report an Outage", "Thank you for calling the Pacific Gas and Electric Company. Please select a language.");
 		IVRNode pgeAnnouncement = pge.addChildMenu("English", "Are you experiencing a hazardous situation such as a gas leak or a downed power line?");
-		IVRNode pgeSpanish = pge.addChildMenu("Spanish", "unimplemented");
+		IVRNode pgeSpanish = pge.addChildMenu("Spanish", "We're sorry, our system does not support Spanish at this time.");
 		
-		IVRNode pgePowerLine = pgeAnnouncement.addChildMenu("Yes - I am experiencing a hazardous situation", "unimplemented");
+		IVRNode pgePowerLine = pgeAnnouncement.addChildNumber("Yes - I am experiencing a hazardous situation", "18007435002,,,,,1");
 		IVRNode pgeMainMenu = pgeAnnouncement.addChildMenu("No - I am experiencing a non-hazardous situation", "Are you calling about an electric outage or a gas outage?");
 		IVRNode pgeElectricOutage = pgeMainMenu.addChildMenu("I want to report an electric outage", "You can report an outage or look up information about one if you supply either your account number or phone number. Which number would you like to give?");
-		IVRNode pgeGasOutage = pgeMainMenu.addChildMenu("I want to report a gas outage", "unimplemented");
+		IVRNode pgeGasOutage = pgeMainMenu.addChildMenu("I want to report a gas outage", "You can report an outage or look up information about one if you supply either your account number or phone number. Which number would you like to give?");
 		
-		IVRNode pgeElectricOutageAcct = pgeElectricOutage.addChildMenu("Give my account number", "unimplemented");
+		IVRNode pgeElectricOutageAcct = pgeElectricOutage.addChildTextInput("Give my account number", "Please enter your 11-digit account number.", "18007435002,,,,,2,,1,,1,,");
 		IVRNode pgeElectricOutagePhone = pgeElectricOutage.addChildTextInput("Give my phone number", "Please enter the 10-digit phone number associated with your account, area code first.", "18007435002,,,,,2,,1,,2,,");
+		IVRNode pgeGasOutageAcct = pgeGasOutage.addChildTextInput("Give my account number", "Please enter your 11-digit account number.", "18007435002,,,,,2,,2,,1,,");
+		IVRNode pgeGasOutagePhone = pgeGasOutage.addChildTextInput("Give my phone number", "Please enter the 10-digit phone number associated with your account, area code first.", "18007435002,,,,,2,,2,,2,,");
 		
 		setRootNode(pge);
 	}
