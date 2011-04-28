@@ -93,12 +93,12 @@ public class IVRApp extends Application {
 		IVRNode officeVisit = makeAppt.addChildMenu("Office Visit", "We offer a number of services related to driver license " +
 				"or vehicle registration. Which would you like?");
 		
-		IVRNode vehicleType = drivingTest.addChildMenu("Yes, I have a driver's license or permit number", "Please enter your license or permit number, which should be a letter followed by a seven-digit number, such as F1234567,");
+		IVRNode vehicleType = drivingTest.addChildMenu("Yes, I have a driver's license or permit number", "Which location would you like to take the test at?");
 		IVRNode alsoofficeVisit = drivingTest.addChildMenu("No, I do not have a driver's license or permit number", "unimplemented");
 		IVRNode drivingTestNum = vehicleType.addChildMenu("El Cerrito DMV", "Please select which test you are planning to take.");
 		IVRNode drivingTestLoc2 = vehicleType.addChildMenu("Oakland DMV", "Please select which test you are planning to take.");
 		IVRNode drivingTestLoc3 = vehicleType.addChildMenu("More DMV Locations", "Please select which test you are planning to take.");
-		IVRNode enterVehicleNum = drivingTestNum.addChildNumber("Automobile Driving Test", "18007770133,,1,,,,,,,,4,,1,,1,,1,,111234567");
+		IVRNode enterVehicleNum = drivingTestNum.addChildNumber("Automobile Driving Test", "18007770133,,1,,,,,,,,4,,1,,1,,1");
 		IVRNode motorcycleTraining = drivingTestNum.addChildMenu("Motorcycle Driving Test", "Have you completed the California motorcycle safety course?");
 		IVRNode enterVehicleNum2 = motorcycleTraining.addChildNumber("Yes - I have completed the California motorcycle safety course", "1-800-777-0133");
 		IVRNode enterVehicleNum3 = motorcycleTraining.addChildNumber("No - I have not completed the California motorcycle safety course", "1-800-777-0133");

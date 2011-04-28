@@ -48,11 +48,14 @@ public class IVRNodeLeafView extends Activity {
 				public void onClick(View arg0) {
 					try {
 						String editInfoText = enterInfo.getText().toString();
+						editInfoText = editInfoText.replaceAll("[^0-9,p]", "");
 						Intent callIntent;
 						if (editInfoText.startsWith("Please")) {
 							callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + "4089648650"));
 						} else {
-							callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + editInfoText));
+							if (editInfoText == "4089648650") 
+								callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + editInfoText + ",,1"));
+							else callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + editInfoText));
 						}
 			    		startActivity(callIntent);
 			    	} catch (ActivityNotFoundException e) {
