@@ -57,8 +57,6 @@ public class IVRNodeLeafView extends Activity {
 								callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + editInfoText + ",,1"));
 							else callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + editInfoText));
 						}
-						String tempTitle = title;
-						String tempNumber = number;
 						RecentSearches.update_recent(title, number+editInfoText);
 			    		startActivity(callIntent);
 			    	} catch (ActivityNotFoundException e) {
