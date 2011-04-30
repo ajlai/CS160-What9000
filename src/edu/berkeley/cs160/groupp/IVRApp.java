@@ -8,6 +8,7 @@ import android.app.Application;
 public class IVRApp extends Application {
 	private static IVRNode root;
 	private static IVRNode current;
+	
 	public void onCreate() {
 		initialize();
 	}
@@ -18,6 +19,9 @@ public class IVRApp extends Application {
 		r.addChildNumber("some other number", "9876543210");
 		r.addChildURL("some url", "http://www.google.com");
 		r.addChildMenu("some unfinished menu", "some unfinished menu descr");
+
+		//TODO load recent entries from preferences storage
+		//TODO load favorites from preferences storage
 		setRootNode(r);
 	}
 	
@@ -48,7 +52,7 @@ public class IVRApp extends Application {
 		IVRNode pgeGasOutage = pgeMainMenu.addChildMenu("I want to report a gas outage", "You can report an outage or look up information about one if you supply either your account number or phone number. Which number would you like to give?");
 		
 		IVRNode pgeElectricOutageAcct = pgeElectricOutage.addChildTextInput("Give my account number", "Please enter your 11-digit account number.", "18007435002,,,,,2,,1,,1,,");
-		IVRNode pgeElectricOutagePhone = pgeElectricOutage.addChildTextInput("Give my phone number", "Please enter the 10-digit phone number associated with your account, area code first.", "18007435002,,,,,2,,1,,2,,");
+		IVRNode pgeElectricOutagePhone = pgeElectricOutage.addChildTextInput("PGE - Give my phone number", "Please enter the 10-digit phone number associated with your account, area code first.", "18007435002,,,,,2,,1,,2,,");
 		IVRNode pgeGasOutageAcct = pgeGasOutage.addChildTextInput("Give my account number", "Please enter your 11-digit account number.", "18007435002,,,,,2,,2,,1,,");
 		IVRNode pgeGasOutagePhone = pgeGasOutage.addChildTextInput("Give my phone number", "Please enter the 10-digit phone number associated with your account, area code first.", "18007435002,,,,,2,,2,,2,,");
 		
@@ -70,7 +74,7 @@ public class IVRApp extends Application {
 		IVRNode findOffice = mainMenu.addChildMenu("Find an Office", "You can either place a call to the system to find the office closest to your zip code, or choose from a list of locations. Which would you like?");
 		IVRNode dmvNews = mainMenu.addChildMenu("Latest DMV News", "Latest DMV news");
 
-		IVRNode findOfficeCall = findOffice.addChildTextInput("Call the System", "Please enter your 5-digit zip code.", "18007770133,,1,,,,,,,,5,,");
+		IVRNode findOfficeCall = findOffice.addChildTextInput("DMV - Call the System", "Please enter your 5-digit zip code.", "18007770133,,1,,,,,,,,5,,");
 		IVRNode findOfficeMenu = findOffice.addChildMenu("Choose from a List", "Please choose one of the following options. You will be able to load the web page of the DMV location that you have chosen.");
 		IVRNode findOfficeMenuOakland = findOfficeMenu.addChildURL("Oakland DMV", "http://apps.dmv.ca.gov/fo/offices/appl/fo_data_read.jsp?foNumb=504");
 		IVRNode findOfficeMenuElCerrito = findOfficeMenu.addChildURL("El Cerrito DMV", "http://apps.dmv.ca.gov/fo/offices/appl/fo_data_read.jsp?foNumb=556");
@@ -146,6 +150,5 @@ public class IVRApp extends Application {
 		recent.addChildURL("Powell Apple Store; Address (Web)", "http://www.apple.com/retail/sanfrancisco/map/");
 		setRootNode(recent);
 	}
-	
 	
 }

@@ -52,9 +52,10 @@ public class CallFromFavoriteSearches extends Activity {
 
 				@Override
 				public void onClick(View arg0) {
+					RecentSearches.update_recent(info, number);
 					try {
 			    		Intent callIntent = new Intent(Intent.ACTION_CALL);
-			    		callIntent.setData(Uri.parse(number));
+			    		callIntent.setData(Uri.parse("tel:"+number));
 			    		startActivity(callIntent);
 			    	} catch (ActivityNotFoundException e) {
 			    		e.printStackTrace();

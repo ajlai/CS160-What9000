@@ -16,6 +16,8 @@ import android.widget.TextView;
 public class IntroPage extends Activity {
 	Button searchName, searchNum, recentSearches, tutorial, favorites;
 	
+	
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class IntroPage extends Activity {
         searchName = (Button) findViewById(R.id.searchNameButton);
         searchNum = (Button) findViewById(R.id.searchNumberButton);
         final Context c = this;
+        
         //TODO: move all these on click listeners somewhere more elegant
         tutorial.setOnClickListener(new OnClickListener() {
 			@Override
