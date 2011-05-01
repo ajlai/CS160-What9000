@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +40,8 @@ public class IVRNodeLeafView extends Activity {
 			callingInfo.setTextSize(15);
 			
 			final EditText enterInfo = (EditText) findViewById(R.id.enterinfoplz);
-			enterInfo.setText(text);
+			enterInfo.setHint(text);
+			enterInfo.setText("");
 			
 			Button connect = (Button) findViewById(R.id.callingbutton);
 	        connect.setOnClickListener(new OnClickListener() {
@@ -50,7 +52,7 @@ public class IVRNodeLeafView extends Activity {
 						String editInfoText = enterInfo.getText().toString();
 						editInfoText = editInfoText.replaceAll("[^0-9,p]", "");
 						Intent callIntent;
-						if (editInfoText.startsWith("Please")) {
+						if (editInfoText.startsWith("Please")) {//TODO this isn't possible now with the replaceAll line
 							callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + "4089648650"));
 						} else {
 							if (editInfoText == "4089648650") 
@@ -63,6 +65,16 @@ public class IVRNodeLeafView extends Activity {
 			    		e.printStackTrace();
 			    	}
 				}}); 
+	        
+	        //For adding favorites
+	        connect.setOnLongClickListener(new OnLongClickListener() {
+	        	public boolean onLongClick(View v){
+	        		String editInfoText = enterInfo.getText().toString();
+					editInfoText = editInfoText.replaceAll("[^0-9,p]", "");
+	        		FavoriteSearches.add_fav(title, number+editInfoText);
+	        		return true;
+	        	}
+	        });
 		}
 		
 		else if (type.equals("number")) {
@@ -89,6 +101,13 @@ public class IVRNodeLeafView extends Activity {
 			    		e.printStackTrace();
 			    	}
 				}});
+	        
+	        connect.setOnLongClickListener(new OnLongClickListener() {
+	        	public boolean onLongClick(View v){
+	        		FavoriteSearches.add_fav(title, number);
+	        		return true;
+	        	}
+	        });
 		} else if (type.equals("link")) {
 			TextView linkInfo = (TextView) findViewById(R.id.callinginfo);
 			linkInfo.setText(title);
@@ -111,6 +130,8 @@ public class IVRNodeLeafView extends Activity {
 				}
 				
 			});
+			
+			//TODO add longclick listener for link favorites?
 		}
 			
 	}
