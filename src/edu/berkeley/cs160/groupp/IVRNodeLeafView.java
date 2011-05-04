@@ -67,16 +67,19 @@ public class IVRNodeLeafView extends Activity {
 						}
 						RecentSearches.update_recent(title, number+editInfoText);
 						
-						int pauseCount = 0;
-						for (int i = 0; i < number.length(); i++) {
-							if (number.charAt(i) == ',') {
-								pauseCount += 2;
-							}
-						}
-			    		Toast.makeText(c, "Please wait while Beat The System navigates menus for you", pauseCount).show();
-
+											// make waiting message toasts
+			    		int pauseCount = 0;
+			    		for (int i = 0; i < number.length(); i++) {
+			    			if (number.charAt(i) == ',') {
+			    				pauseCount += 1;
+			    			} else if (number.charAt(i) == 'p') {
+			    				pauseCount += 1;
+			    			}
+			    		}
+			    		for (int i = 0; i < Math.round(1+((1+ pauseCount) / 2)); i++) {
+					    	Toast.makeText(c, "Please wait while Beat The System navigates menus for you", Toast.LENGTH_LONG).show();
+			    		}
 			   			startActivity(callIntent);
-			    		Toast.makeText(c, "Navigating Menus...", Toast.LENGTH_LONG).show();
 
 						
 			    	} catch (ActivityNotFoundException e) {
@@ -116,14 +119,20 @@ public class IVRNodeLeafView extends Activity {
 					try {
 			    		Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
 			    		
+			    							// make waiting message toasts
 			    		int pauseCount = 0;
 			    		for (int i = 0; i < number.length(); i++) {
 			    			if (number.charAt(i) == ',') {
-			    				pauseCount += 2;
+			    				pauseCount += 1;
+			    			} else if (number.charAt(i) == 'p') {
+			    				pauseCount += 1;
 			    			}
 			    		}
+			    		for (int i = 0; i < Math.round(1+((1+ pauseCount) / 2)); i++) {
+					    	Toast.makeText(c, "Please wait while Beat The System navigates menus for you", Toast.LENGTH_LONG).show();
+			    		}
 			    		startActivity(callIntent);
-			    		Toast.makeText(c, "Please wait while Beat The System navigates menus for you", pauseCount).show();
+
 			    	} catch (ActivityNotFoundException e) {
 			    		e.printStackTrace();
 			    	}
