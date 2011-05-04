@@ -90,6 +90,7 @@ public class IVRNodeLeafView extends Activity {
 	        		String editInfoText = enterInfo.getText().toString();
 					editInfoText = editInfoText.replaceAll("[^0-9,p]", "");
 	        		FavoriteSearches.add_fav(title, number+editInfoText);
+	        		Toast.makeText(c, "Call added to Favorites!", Toast.LENGTH_SHORT).show();
 	        		return true;
 	        	}
 	        });
@@ -131,6 +132,7 @@ public class IVRNodeLeafView extends Activity {
 	        connect.setOnLongClickListener(new OnLongClickListener() {
 	        	public boolean onLongClick(View v){
 	        		FavoriteSearches.add_fav(title, number);
+	        		Toast.makeText(c, "Call added to Favorites!", Toast.LENGTH_SHORT).show();
 	        		return true;
 	        	}
 	        });

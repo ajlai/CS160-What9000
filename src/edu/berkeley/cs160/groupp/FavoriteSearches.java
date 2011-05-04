@@ -23,14 +23,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 public class FavoriteSearches extends IVRNodeBranchView {
-	private static int numFav;
 	private static LinkedHashMap<String, String> favorites = new LinkedHashMap();
 	public static IVRNode fav = new IVRNode(null, "menu", "Favorite Searches", "This is a list of searches you have marked as your favorite. " 
 			+ "Click any search to be transported directly to the end page." + "  Hold any search to delete from Favorites.");
 	
 		public void onCreate(Bundle savedInstanceState) {
-			//IVRApp.initializeFavorites();
-			
 			load_favorites();
 			
 			IVRApp.setRootNode(fav);
@@ -42,8 +39,13 @@ public class FavoriteSearches extends IVRNodeBranchView {
 				@Override
 				public boolean onItemLongClick(AdapterView<?> parent, View view,
 						int position, long id) {
+					//TODO more complete testing for correctness
 					remove_fav(currentBranch.getChild(position).getTitle());
-					//TODO not everything is updating correctly, and there's a ghost entry?
+					//Favorites list won't update when I longclick an item to delete
+					//must navigate away and back to see changes
+					//need to find the right thing to invalidate?
+					parent.invalidate();
+					view.invalidate();
 					return true;
 				}
 			});
@@ -55,18 +57,21 @@ public class FavoriteSearches extends IVRNodeBranchView {
 			save_fav();
 		}
 		
+		//gets preferences from the preferences file
 		private void load_favorites() {
 			SharedPreferences prefs = getPreferences(MODE_PRIVATE);
 			
+			//"numFav" represents how many favorites are stored in the file
+			//favNameX and favNumX are the title and phone number of favorite #X
 			int numTemp = prefs.getInt("numFav", 0);
 			for(int i=0; i<numTemp; i++) {
 				favorites.put(prefs.getString("favName"+i, ""), prefs.getString("favNum"+i, ""));
 			}
-			numFav += numTemp;
 			
 			refresh_list();
 		}
 		
+		//called after loading from file, or any add/remove of favorites
 		private static void refresh_list() {
 			fav.getChildren().clear();
 			
@@ -76,12 +81,13 @@ public class FavoriteSearches extends IVRNodeBranchView {
 			}
 		}
 		
+		//writes favorites to the preference file
 		private void save_fav() {
 			int sav_index = 0;
 			SharedPreferences prefs = getPreferences(MODE_PRIVATE);
 	    	SharedPreferences.Editor editor = prefs.edit();
 			
-	    	editor.putInt("numFav", numFav);
+	    	editor.putInt("numFav", favorites.size());
 	    	
 			for(Iterator<Map.Entry<String, String>> i = favorites.entrySet().iterator(); i.hasNext() ; ) {
 				Map.Entry<String, String> kvEntry = (Entry<String, String>) i.next();
@@ -94,18 +100,21 @@ public class FavoriteSearches extends IVRNodeBranchView {
 		
 		public static void add_fav(String newName, String newNumber) {
 			favorites.put(newName, newNumber);
-			numFav++;
 			refresh_list();
 		}
 		
 		public static void remove_fav(String remName) {
 			favorites.remove(remName);
-			numFav--;
 			refresh_list();
 		}
 		
-		private static void clear_list() {
-			numFav = 0;
+		//never used, debug stuff
+		private void clear_list() {
+			SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+	    	SharedPreferences.Editor editor = prefs.edit();
+			
+	    	editor.putInt("numFav", 0);
+			editor.commit();
 		}
 	}
 
