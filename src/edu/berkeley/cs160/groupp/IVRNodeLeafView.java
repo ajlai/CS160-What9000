@@ -2,6 +2,7 @@
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,8 +12,8 @@ import android.view.View.OnLongClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class IVRNodeLeafView extends Activity {
 	String title = "NONE";
@@ -20,10 +21,13 @@ public class IVRNodeLeafView extends Activity {
 	String src = "http://www.google.com";
 	String type = "number";
 	String text = "null";
+	Context c;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nodeleafview);
+		
+		c = this;
 		
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
@@ -33,6 +37,8 @@ public class IVRNodeLeafView extends Activity {
 			type = extras.getString("type");
 			text = extras.getString("text");
 		}
+		
+
 		
 		if (type.equals("text")) {
 			TextView callingInfo = (TextView) findViewById(R.id.calling);
@@ -60,7 +66,19 @@ public class IVRNodeLeafView extends Activity {
 							else callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number + editInfoText));
 						}
 						RecentSearches.update_recent(title, number+editInfoText);
-			    		startActivity(callIntent);
+						
+						int pauseCount = 0;
+						for (int i = 0; i < number.length(); i++) {
+							if (number.charAt(i) == ',') {
+								pauseCount += 2;
+							}
+						}
+			    		Toast.makeText(c, "Please wait while Beat The System navigates menus for you", pauseCount).show();
+
+			   			startActivity(callIntent);
+			    		Toast.makeText(c, "Navigating Menus...", Toast.LENGTH_LONG).show();
+
+						
 			    	} catch (ActivityNotFoundException e) {
 			    		e.printStackTrace();
 			    	}
@@ -96,7 +114,15 @@ public class IVRNodeLeafView extends Activity {
 					RecentSearches.update_recent(title, number);
 					try {
 			    		Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+			    		
+			    		int pauseCount = 0;
+			    		for (int i = 0; i < number.length(); i++) {
+			    			if (number.charAt(i) == ',') {
+			    				pauseCount += 2;
+			    			}
+			    		}
 			    		startActivity(callIntent);
+			    		Toast.makeText(c, "Please wait while Beat The System navigates menus for you", pauseCount).show();
 			    	} catch (ActivityNotFoundException e) {
 			    		e.printStackTrace();
 			    	}
