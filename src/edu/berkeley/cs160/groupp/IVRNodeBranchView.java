@@ -5,6 +5,8 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -63,14 +65,62 @@ public class IVRNodeBranchView extends ListActivity {
 	}
 	
 	public void onBackPressed() {
-		if (currentBranch.getParent() == null) {
-			super.onBackPressed();
+		goBack();
+	}
+		
+	public void goBack() {
+		if (IVRApp.canGoBack()) {
+			currentBranch = IVRApp.goBack();
+			setListAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.list_item, currentBranch.getMenuString()));
 		} else {
-			currentBranch = currentBranch.getParent();
-			final TextView description = (TextView) findViewById(R.id.description);
-			description.setText(currentBranch.getDescription());
-			this.setTitle(currentBranch.getTitle());
+			super.onBackPressed();
+		}
+	}
+	
+	public void goForward() {
+		if (IVRApp.canGoForward()) {
+			currentBranch = IVRApp.goForward();
 			setListAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.list_item, currentBranch.getMenuString()));
 		}
+	}
+	
+	public void goHome() {
+		Intent i = new Intent(getApplicationContext(), IntroPage.class);
+		startActivityForResult(i, 1);
+	}
+	
+	static final int backBtnId = Menu.FIRST;
+	static final int forwardBtnId = backBtnId + 1;
+	static final int homeBtnId = forwardBtnId + 1;
+	static final int groupId = 1;
+	public boolean onCreateOptionsMenu(Menu menu){
+		int groupId = 1;
+		menu.add(groupId, backBtnId, backBtnId, "Back");
+		menu.add(groupId, forwardBtnId, forwardBtnId, "Forward");
+		menu.add(groupId, homeBtnId, homeBtnId, "Home");
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		MenuItem backOption = menu.findItem(backBtnId);
+		backOption.setEnabled(IVRApp.canGoBack());
+		MenuItem forwardOption = menu.findItem(forwardBtnId);
+		forwardOption.setEnabled(IVRApp.canGoForward());
+		return super.onPrepareOptionsMenu(menu);
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item){
+		switch (item.getItemId()) {
+		case backBtnId:
+			goBack();
+			return true;
+		case forwardBtnId:
+			goForward();
+			return true;
+		case homeBtnId:
+			goHome();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

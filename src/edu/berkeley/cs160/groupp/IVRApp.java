@@ -2,12 +2,15 @@ package edu.berkeley.cs160.groupp;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import android.app.Application;
 
 public class IVRApp extends Application {
 	private static IVRNode root;
 	private static IVRNode current;
+	private static ArrayList<IVRNode> history = new ArrayList<IVRNode>();
+	private static int place = -1;
 	
 	public void onCreate() {
 		initialize();
@@ -38,7 +41,32 @@ public class IVRApp extends Application {
 	}
 	
 	public static void setCurrentBranch(IVRNode c) {
+		history.add(place+1, c);
+		place++;
+		for(int i = place+1; i < history.size(); i++) {
+			history.remove(i);
+		}
 		current = c;
+	}
+	
+	public static boolean canGoBack() {
+		return (place > 0);
+	}
+	
+	public static boolean canGoForward() {
+		return (place < history.size()-1);
+	}
+	
+	public static IVRNode goBack() {
+		place--;
+		current = history.get(place);
+		return current;
+	}
+	
+	public static IVRNode goForward() {
+		place++;
+		current = history.get(place);
+		return current;
 	}
 	
 	public static void initializePGE() {
