@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class IntroPage extends Activity {
-	Button searchName, searchNum, recentSearches, tutorial, favorites;
+	Button searchNum, recentSearches, tutorial, favorites;
 	
 	
 	
@@ -27,7 +27,7 @@ public class IntroPage extends Activity {
         favorites = (Button) findViewById(R.id.preferencesButton);
         tutorial = (Button) findViewById(R.id.tutorialButton);
         recentSearches = (Button) findViewById(R.id.recentButton);
-        searchName = (Button) findViewById(R.id.searchNameButton);
+        //searchName = (Button) findViewById(R.id.searchNameButton);
         searchNum = (Button) findViewById(R.id.searchNumberButton);
         final Context c = this;
         
@@ -59,14 +59,14 @@ public class IntroPage extends Activity {
 				Intent i = new Intent(c, RecentSearches.class);
 				startActivityForResult(i, 1);
 			}});
-        
+        /*
         searchName.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent myIntent = new Intent(c, SearchPage.class);
 				startActivityForResult(myIntent, 0);
 			}});
-        
+        */
         searchNum.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

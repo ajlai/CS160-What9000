@@ -28,7 +28,7 @@
 <Button
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
-	android:text="Click here to begin the call."
+	android:text="Click here to begin the call.  Hold to add as Favorite"
 	android:id="@+id/callingbutton"
 	android:layout_below="@+id/enterinfoplz">
 </Button>
