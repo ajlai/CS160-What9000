@@ -1,5 +1,7 @@
 package edu.berkeley.cs160.groupp;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
@@ -73,6 +75,7 @@ public class IVRNodeBranchView extends ListActivity {
 			currentBranch = IVRApp.goBack();
 			setListAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.list_item, currentBranch.getMenuString()));
 		} else {
+			IVRApp.clearHistory();
 			super.onBackPressed();
 		}
 	}
@@ -85,6 +88,7 @@ public class IVRNodeBranchView extends ListActivity {
 	}
 	
 	public void goHome() {
+		IVRApp.clearHistory();
 		Intent i = new Intent(getApplicationContext(), IntroPage.class);
 		startActivityForResult(i, 1);
 	}

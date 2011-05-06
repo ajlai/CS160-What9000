@@ -3,7 +3,7 @@ package edu.berkeley.cs160.groupp;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class IVRNode {
+public class IVRNode{
 	private IVRNode parent;
 	private ArrayList<IVRNode> children = new ArrayList<IVRNode> ();
 	
@@ -84,11 +84,12 @@ public class IVRNode {
 	}
 	
 	
-	public String[] getMenuString() {
-		String [] rtn = new String [this.children.size()];
+	public ArrayList<String> getMenuString() {
+		//String [] rtn = new String [this.children.size()];
+		ArrayList<String> rtn = new ArrayList<String>();
 		
 		for (int i = 0; i < this.children.size(); i++) {
-			rtn[i] = this.children.get(i).title;
+			rtn.add(this.children.get(i).title);
 		}
 		return rtn;
 	}

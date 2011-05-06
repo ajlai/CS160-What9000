@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -26,9 +28,11 @@ public class FavoriteSearches extends IVRNodeBranchView {
 	private static LinkedHashMap<String, String> favorites = new LinkedHashMap();
 	public static IVRNode fav = new IVRNode(null, "menu", "Favorite Searches", "This is a list of searches you have marked as your favorite. " 
 			+ "Click any search to be transported directly to the end page." + "  Hold any search to delete from Favorites.");
-	
+	Context c;
 		public void onCreate(Bundle savedInstanceState) {
+			c = this;
 			load_favorites();
+			
 			
 			IVRApp.setRootNode(fav);
 			IVRApp.setCurrentBranch(IVRApp.getRootNode());
@@ -44,9 +48,13 @@ public class FavoriteSearches extends IVRNodeBranchView {
 					//Favorites list won't update when I longclick an item to delete
 					//must navigate away and back to see changes
 					//need to find the right thing to invalidate?
-					parent.invalidate();
-					view.invalidate();
+					//parent.refreshDrawableState();
+					ArrayAdapter<String> tempAdapter = ((ArrayAdapter<String>)getListAdapter());
+					String asdf = tempAdapter.getItem(position);
+					tempAdapter.remove(asdf);
+					tempAdapter.notifyDataSetChanged();
 					return true;
+					
 				}
 			});
 			

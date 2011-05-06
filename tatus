@@ -1,0 +1,62 @@
+[33mcommit a7e42a75431ee3758295950cb3a5dc22d2dc1324[m
+Merge: f7e292f d3917fc
+Author: Colin Zhou <colin.m.zhou@gmail.com>
+Date:   Mon Apr 4 00:26:26 2011 -0700
+
+    Merge branch 'master' of https://github.com/anthonylai89/CS160-What9000
+
+[33mcommit d3917fc256a7852493def5bb995421082ad185be[m
+Author: Jennifer Song <jennifersong@Jennifer-Songs-MacBook.local>
+Date:   Mon Apr 4 00:08:14 2011 -0700
+
+    Stuff that I forgot to add, mainly executables and class files
+
+[33mcommit f7e292fe9b1205cde26a5119dfec3ebe8185576b[m
+Merge: 67bb8fb c85bab5
+Author: unknown <Colin Zhou@.(none)>
+Date:   Sun Apr 3 23:49:33 2011 -0700
+
+    Merge branch 'master' of https://github.com/anthonylai89/CS160-What9000
+
+[33mcommit c85bab5736bdd92729ed0e66835b25db0729bdc6[m
+Author: Jennifer Song <jennifersong@Jennifer-Songs-MacBook.local>
+Date:   Sun Apr 3 23:47:25 2011 -0700
+
+    Adding functionality for Recent Searches, Favorite Searches, Tutorial.
+
+[33mcommit 67bb8fb637634ab6dbe5f7e27188198d8914e2ae[m
+Author: unknown <Colin Zhou@.(none)>
+Date:   Sun Apr 3 23:22:12 2011 -0700
+
+    adding Kevin's IVR file into Git(?)
+
+[33mcommit 5e38d2753133283773b3f2e637dc6550e6daecd4[m
+Merge: 4f4a0d2 fbbc1f9
+Author: Anthony Lai <anthonylai89@gmail.com>
+Date:   Sun Apr 3 18:48:26 2011 -0700
+
+    Merge branch 'master' of github.com:anthonylai89/CS160-What9000
+
+[33mcommit 4f4a0d2e40de108ac4804b0aadcde27156acd3ef[m
+Author: Anthony Lai <anthonylai89@gmail.com>
+Date:   Sun Apr 3 18:46:22 2011 -0700
+
+    added IVRApp, IVRNode class, unfinished PhoneListView
+
+[33mcommit fbbc1f99353344ba053e4b61bb8b721a5f7c3a3d[m
+Author: Jennifer Song <jennifersong@Jennifer-Songs-MacBook.local>
+Date:   Sat Apr 2 00:00:28 2011 -0700
+
+    Addition of layout files corresponding to prototype.
+
+[33mcommit 2c078446c83977055d6f7f370a365b4df090ae12[m
+Author: Jennifer Song <jennifersong@Jennifer-Songs-MacBook.local>
+Date:   Fri Apr 1 23:39:19 2011 -0700
+
+    Addition of different Activity files
+
+[33mcommit 6312188c326a6df211a8c9464de521d3efa66fcd[m
+Author: Anthony Lai <anthonylai89@gmail.com>
+Date:   Fri Apr 1 23:13:53 2011 -0700
+
+    adding jennifer's material for first commit

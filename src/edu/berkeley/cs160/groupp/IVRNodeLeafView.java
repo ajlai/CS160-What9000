@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
@@ -23,11 +24,15 @@ public class IVRNodeLeafView extends Activity {
 	String text = "null";
 	Context c;
 	
+	Toast waitMsg;
+	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nodeleafview);
 		
 		c = this;
+		
+		waitMsg = Toast.makeText(c, "Please wait while Beat The System navigates menus for you...", Toast.LENGTH_LONG);
 		
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
@@ -67,21 +72,19 @@ public class IVRNodeLeafView extends Activity {
 						}
 						RecentSearches.update_recent(title, number+editInfoText);
 						
-											// make waiting message toasts
-			    		int pauseCount = 0;
-			    		for (int i = 0; i < number.length(); i++) {
-			    			if (number.charAt(i) == ',') {
-			    				pauseCount += 1;
-			    			} else if (number.charAt(i) == 'p') {
-			    				pauseCount += 1;
-			    			}
-			    		}
-			    		for (int i = 0; i < Math.round(1+((1+ pauseCount) / 2)); i++) {
-					    	Toast.makeText(c, "Please wait while Beat The System navigates menus for you", Toast.LENGTH_LONG).show();
-			    		}
+						int pauseCount = 0;
+						for (int i = 0; i < number.length(); i++) {
+							if (number.charAt(i) == ',') {
+								pauseCount += 2;
+							} else if(number.charAt(i) == 'p') {
+								pauseCount += 2;
+							}
+						}
 			   			startActivity(callIntent);
-
-						
+			    		while(pauseCount > 0){
+			    			Toast.makeText(c, "Please wait while Beat The System navigates menus for you", Toast.LENGTH_SHORT).show();
+			    			pauseCount--;
+			    		}						
 			    	} catch (ActivityNotFoundException e) {
 			    		e.printStackTrace();
 			    	}
@@ -119,20 +122,19 @@ public class IVRNodeLeafView extends Activity {
 					try {
 			    		Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
 			    		
-			    							// make waiting message toasts
-			    		int pauseCount = 0;
-			    		for (int i = 0; i < number.length(); i++) {
-			    			if (number.charAt(i) == ',') {
-			    				pauseCount += 1;
-			    			} else if (number.charAt(i) == 'p') {
-			    				pauseCount += 1;
-			    			}
-			    		}
-			    		for (int i = 0; i < Math.round(1+((1+ pauseCount) / 2)); i++) {
-					    	Toast.makeText(c, "Please wait while Beat The System navigates menus for you", Toast.LENGTH_LONG).show();
-			    		}
-			    		startActivity(callIntent);
-
+						int pauseCount = 0;
+						for (int i = 0; i < number.length(); i++) {
+							if (number.charAt(i) == ',') {
+								pauseCount += 2;
+							} else if(number.charAt(i) == 'p') {
+								pauseCount += 2;
+							}
+						}
+			   			startActivity(callIntent);
+			    		while(pauseCount > 0){
+			    			Toast.makeText(c, "Please wait while Beat The System navigates menus for you", Toast.LENGTH_SHORT).show();
+			    			pauseCount--;
+			    		}		
 			    	} catch (ActivityNotFoundException e) {
 			    		e.printStackTrace();
 			    	}
@@ -170,6 +172,7 @@ public class IVRNodeLeafView extends Activity {
 			
 			//TODO add longclick listener for link favorites?
 		}
-			
 	}
 }
+
+

@@ -22,9 +22,6 @@ public class IVRApp extends Application {
 		r.addChildNumber("some other number", "9876543210");
 		r.addChildURL("some url", "http://www.google.com");
 		r.addChildMenu("some unfinished menu", "some unfinished menu descr");
-
-		//TODO load recent entries from preferences storage
-		//TODO load favorites from preferences storage
 		setRootNode(r);
 	}
 	
@@ -67,6 +64,11 @@ public class IVRApp extends Application {
 		place++;
 		current = history.get(place);
 		return current;
+	}
+	
+	public static void clearHistory() {
+		history.clear();
+		place = -1;
 	}
 	
 	public static void initializePGE() {
